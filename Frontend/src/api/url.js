@@ -1,6 +1,6 @@
 import axios from 'axios'
 const BACKEND_URL = axios.create({
-    baseURL:"http://localhost:3000/notesapp"
+    baseURL:"https://notes-book-regm.onrender.com/notesapp"
 })
 
 export default BACKEND_URL
