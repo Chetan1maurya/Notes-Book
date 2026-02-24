@@ -6,7 +6,6 @@ export const createNote = async(req,res) => {
         if(!data.title || !data.content){
             return res.status(400).json({message: "Title and Content are required"});
         }
-        console.log("Data received ",data);
         const note = await Notes.create({
             title: data.title,
             content: data.content
@@ -39,7 +38,6 @@ export const getNotes = async(req,res) => {
 export const updateNote = async(req,res) => {
     try{
         const updatedData = req.body;
-        console.log(updatedData);
         const update = await Notes.findByIdAndUpdate(req.params.id, updatedData,{new: true});
         if(!update){
             res.status(404).json({message:"Data not updated"});

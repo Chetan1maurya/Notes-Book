@@ -5,7 +5,6 @@ const NoteCard = ({ note }) => {
   const { deleteNote, updateNote } = useContext(NoteContext);
   const [isEditing, setIsEditing] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
-  const [sure, setSure] = useState(false);
   const [editData, setEditData] = useState({
     title: note.title,
     content: note.content,
@@ -15,7 +14,6 @@ const NoteCard = ({ note }) => {
     setIsEditing(false);
   };
   const handleDelete = () => {
-    console.log("Delete karna hai");
     setShowConfirm(true);
   };
   const confirmDelete = () => {

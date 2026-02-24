@@ -23,17 +23,13 @@ export const NoteProvider = ({ children }) => {
   }, []);
 
   const createNote = async (note) => {
-    console.log("Hello Notes creation started");
     const response = await BACKEND_URL.post("/create-note", note);
-    console.log(response);
     const newNote = response.data.note;
     setNotes((prevNotes) => [newNote, ...prevNotes]);
-    console.log("Hello Notes created");
   };
 
   const updateNote = async (id, updateNote) => {
     const response = await BACKEND_URL.put(`/update-note/${id}`, updateNote);
-    console.log(response.data.message);
     setNotes((prevNotes) =>
       prevNotes.map((note) => (note._id === id ? response.data.update : note)),
     );

@@ -11,7 +11,7 @@ function Noteform() {
     const handleSubmit=async(e)=>{
         e.preventDefault()
         if(!note.title || !note.content) return
-       await createNote(note)
+        await createNote(note)
         setNote({title:"",content:""});
         navigate("/");
     }
