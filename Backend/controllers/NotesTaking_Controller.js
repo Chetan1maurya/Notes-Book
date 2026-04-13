@@ -38,7 +38,7 @@ export const getNotes = async(req,res) => {
 export const updateNote = async(req,res) => {
     try{
         const updatedData = req.body;
-        const update = await Notes.findByIdAndUpdate(req.params.id, updatedData,{new: true});
+        const update = await Notes.findByIdAndUpdate(req.params.id, updatedData, {new: true});
         if(!update){
             res.status(404).json({message:"Data not updated"});
         }
@@ -56,7 +56,7 @@ export const deleteNote = async(req,res) => {
     try{
         const deletedNote = await Notes.findByIdAndDelete(req.params.id);
         if(!deletedNote){
-            res.status(404).json({message:"Data is not deleted"});
+            res.status(404).json({message:"Note not found"});
         }
         res.status(200).json({message:"Data Deleted Successfully"});
     }

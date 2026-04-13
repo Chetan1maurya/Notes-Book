@@ -5,9 +5,9 @@ import App from './App.jsx'
 import { NoteProvider } from './context/NoteContext.jsx'
 
 createRoot(document.getElementById('root')).render(
-  <BrowserRouter>
-  <NoteProvider>
-    <App />
-  </NoteProvider>
-  </BrowserRouter>,
+    <BrowserRouter>
+      <NoteProvider>
+        <App />
+      </NoteProvider>
+    </BrowserRouter>
 )

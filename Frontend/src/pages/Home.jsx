@@ -7,15 +7,15 @@ const Home = () => {
   console.log("hello ", notes);
   if (loading) {
     return (
-      <div className="flex justify-center items-center min-h-screen">
-        <p className="text-lg text-gray-600">Loading...</p>
+      <div className="flex justify-center items-center">
+        <p className="text-lg text-gray-500">Loading...</p>
       </div>
     );
   }
   if (notes.length === 0) {
     return (
       <div className="flex-1 flex justify-center items-center">
-        <p className="text-lg text-gray-700">No Notes Available</p>
+        <p className="text-lg text-gray-500">No Notes Available</p>
       </div>
     );
   }
