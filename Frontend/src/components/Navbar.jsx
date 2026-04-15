@@ -91,8 +91,8 @@ const Navbar = () => {
             )}
           </button>
           <Link
-            to="/home"
-            className={`dark:hover:text-blue-300 hover:text-blue-900 transition ${location.pathname === "/home" ? "dark:text-blue-300 text-blue-800 font-semibold" : "dark:text-gray-300 text-gray-800"}`}
+            to="/"
+            className={`dark:hover:text-blue-300 hover:text-blue-900 transition ${location.pathname === "/" ? "dark:text-blue-300 text-blue-800 font-semibold" : "dark:text-gray-300 text-gray-800"}`}
           >
             Home
           </Link>
