@@ -1,11 +1,12 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useContext, useEffect } from "react";
 import BACKEND_URL from "../api/url.js";
 export const NoteContext = createContext();
+import { AuthContext } from './AuthContext.jsx'
 
 export const NoteProvider = ({ children }) => {
   const [notes, setNotes] = useState([]);
   const [loading, setLoading] = useState(true);
-
+  const { user } = useContext(AuthContext);
   const getNotes = async () => {
     setLoading(true);
     try {
@@ -19,8 +20,15 @@ export const NoteProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    getNotes();
-  }, []);
+    if(!user) return;
+    getNotes();   //get notes only when user is logged in
+  }, [user]);
+
+  useEffect(() => {
+    if (!user) {
+      setNotes([]);   // clear notes when logged out
+    }
+  }, [user]);
 
   const createNote = async (note) => {
     const response = await BACKEND_URL.post("/create-note", note);

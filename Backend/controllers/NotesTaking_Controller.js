@@ -8,7 +8,8 @@ export const createNote = async(req,res) => {
         }
         const note = await Notes.create({
             title: data.title,
-            content: data.content
+            content: data.content,
+            userId: req.user.uid
         })
         res.status(200).json({
             success: true,
@@ -27,7 +28,9 @@ export const createNote = async(req,res) => {
 
 export const getNotes = async(req,res) => {
     try{
-        const notes = await Notes.find().sort({createdAt:-1});
+        const notes = await Notes.find({
+            userId: req.user.uid
+        }).sort({createdAt:-1});
         res.status(200).json(notes);
     }
     catch(err){
@@ -38,7 +41,7 @@ export const getNotes = async(req,res) => {
 export const updateNote = async(req,res) => {
     try{
         const updatedData = req.body;
-        const update = await Notes.findByIdAndUpdate(req.params.id, updatedData, {new: true});
+        const update = await Notes.findOneAndUpdate({_id:req.params.id, userId:req.user.uid}, updatedData, {new: true});
         if(!update){
             res.status(404).json({message:"Data not updated"});
         }
@@ -54,7 +57,7 @@ export const updateNote = async(req,res) => {
 
 export const deleteNote = async(req,res) => {
     try{
-        const deletedNote = await Notes.findByIdAndDelete(req.params.id);
+        const deletedNote = await Notes.findOneAndDelete({_id:req.params.id, userId: req.user.uid});
         if(!deletedNote){
             res.status(404).json({message:"Note not found"});
         }
