@@ -17,7 +17,10 @@ mongoose.connect(process.env.MONGO_URI)
 .catch((err) => {
     console.log("There is Error ",err);
 })
-
+app.use((req, res, next) => {
+  res.setHeader("Cross-Origin-Opener-Policy", "same-origin-allow-popups");
+  next();
+});
 app.get('/',(req,res) => {
     res.status(200).json({message: "Everything is good"});
 })

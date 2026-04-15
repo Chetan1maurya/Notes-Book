@@ -28,6 +28,10 @@ export const createNote = async(req,res) => {
 
 export const getNotes = async(req,res) => {
     try{
+        if (!req.user || !req.user.uid) {
+            console.log("User is not defined or Unauthorized")
+            res.status(401).json({ message: "Unauthorized" });
+        }
         const notes = await Notes.find({
             userId: req.user.uid
         }).sort({createdAt:-1});
