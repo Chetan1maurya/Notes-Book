@@ -13,7 +13,7 @@ function Noteform() {
         if(!note.title || !note.content) return
         await createNote(note)
         setNote({title:"",content:""});
-        navigate("/home");
+        navigate("/");
     }
   return (
     <div className="max-w-xl mx-auto mt-10 dark:bg-gray-800 bg-gray-200 rounded-2xl shadow-lg p-8 z-50">

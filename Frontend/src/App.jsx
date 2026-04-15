@@ -13,7 +13,7 @@ const App = () => {
        <Navbar />
         <main className="flex-1 container mx-auto p-4 flex flex-col">
           <Routes>
-            <Route path="/home" element={<PrivateRoute><Home/></PrivateRoute>} />
+            <Route path="/" element={<PrivateRoute><Home/></PrivateRoute>} />
             <Route 
               path='/create' 
               element={

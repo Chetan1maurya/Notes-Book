@@ -24,7 +24,7 @@ const Navbar = () => {
     try {
       await signInWithPopup(auth, provider);
     console.log("User logged in successfully");
-      navigate("/home");
+      navigate("/");
     } catch (err) {
       console.log(err);
     }
