@@ -2,7 +2,6 @@ import dotenv from "dotenv";
 dotenv.config();
 import admin from "firebase-admin";
 
-console.log("PROJECT ID:", process.env.FIREBASE_PROJECT_ID);
 const serviceAccount = {
   type: process.env.FIREBASE_TYPE,
   project_id: process.env.FIREBASE_PROJECT_ID,
